@@ -5,13 +5,12 @@
 
 char* hey_bob (const char* text) 
 {
-	char* end = text + strlen(text) - 1;
+	const char* end = text + strlen(text) - 1;
 	while (end > text && isspace(*end)) { end--; }
-	*(end + 1) = '\0';
 
-	if (strcmp(text, "") == 0) { return "Fine. BE that way!"; }
+	if (text >= end) { return "Fine. Be that way!"; }
 
-	int textlen = strlen(text);
+	int textlen = end - text;
 	int yell = 0;
 	for (int i = 0; i < textlen; i++) {
 		if (text[i] >= 'a' && text[i] <= 'z') { 
@@ -23,7 +22,7 @@ char* hey_bob (const char* text)
 
 	if (yell) { return "Whoa, chill out!"; }
 
-	if (strrchr(text, '?') == text + textlen - 1) { return "Sure."; }
+	if (strrchr(text, '?') == end) { return "Sure."; }
 
 	return "Whatever.";
 }

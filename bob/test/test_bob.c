@@ -99,28 +99,24 @@ void test_prattling_on(void)
 
 void test_question_with_trailing_whitespace(void)
 {
-   TEST_IGNORE();
    TEST_ASSERT_EQUAL_STRING("Sure.", hey_bob("Are you ok? ")
        );
 }
 
 void test_silence(void)
 {
-   TEST_IGNORE();
    TEST_ASSERT_EQUAL_STRING("Fine. Be that way!", hey_bob("")
        );
 }
 
 void test_prolonged_silence(void)
 {
-   TEST_IGNORE();
    TEST_ASSERT_EQUAL_STRING("Fine. Be that way!", hey_bob("   ")
        );
 }
 
 void test_not_all_silence(void)
 {
-   TEST_IGNORE();
    TEST_ASSERT_EQUAL_STRING("Whatever.",
                             hey_bob(" A bit of silence can be nice.  ")
        );
