@@ -4,7 +4,6 @@
 
 unsigned long square (int squareNum) 
 {
-	if (squareNum == 1) { return 1; }
 	if (squareNum > 64) { return 0; }
 	return pow(2, squareNum - 1);
 }
