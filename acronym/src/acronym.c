@@ -10,15 +10,18 @@ char* abbreviate (const char* phrase)
 	if (phrase == NULL) { return NULL; }
 	if (strcmp(phrase, "") == 0) { return NULL; }
 
-	char* token = (char*) malloc(strlen(phrase) * sizeof(char));
-	strcpy(token, phrase);
+	char* token = strdup(phrase);
 	char* acro = (char*) calloc(10, sizeof(char));
+
+	char* pAcro = acro;
 	while ((token = strtok(token, " -")) != NULL) {
-		sprintf(acro, "%s%c", acro, toupper(*token));
+		if (pAcro - acro < 10) { 
+			*pAcro = toupper(*token);
+			++pAcro;
+		}
 		token = NULL;
 	}
 	
 	free(token);
 	return acro;
 }
-

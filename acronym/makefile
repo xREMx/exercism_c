@@ -2,7 +2,7 @@ CFLAGS  = -std=c99
 CFLAGS += -Wall
 CFLAGS += -Wextra
 CFLAGS += -pedantic
-CFLAGS += -Werror
+CFLAGS += -Werror -fsanitize=address
 
 test: tests.out
 	@./tests.out
