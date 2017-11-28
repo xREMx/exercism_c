@@ -4,7 +4,7 @@
 
 size_t rebase (int8_t* digits, int16_t input_base, int16_t output_base, size_t input_length) 
 {
-	uint64_t baseTen = 0;
+	uint64_t value = 0;
 
 	if (input_base < 2) { return 0; }
 	if (output_base < 2) { return 0; }
@@ -13,13 +13,13 @@ size_t rebase (int8_t* digits, int16_t input_base, int16_t output_base, size_t i
 	for (size_t exponent = input_length - 1, index = 0; index < input_length; --exponent, ++index) {
 		if (digits[index] < 0) { return 0; }
 		if (digits[index] >= input_base) { return 0; }
-		baseTen += digits[index] * pow(input_base, exponent);
+		value += digits[index] * pow(input_base, exponent);
 	}
 
 	size_t index1 = 0;
-	while (baseTen) {
-		digits[index1] = baseTen % output_base;
-		baseTen /= output_base;
+	while (value) {
+		digits[index1] = value % output_base;
+		value /= output_base;
 		++index1;
 	}
 
